@@ -7,7 +7,7 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/public/index.html')
 })
 
-app.get('/get',(req,res)=>{
+app.get('/gete',(req,res)=>{
     res.send('Hello Sir')
 })
 

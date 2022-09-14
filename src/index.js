@@ -15,4 +15,5 @@ function Render(){
         </React.StrictMode>
     )
 }
+
 setInterval(Render, 1000);
