@@ -1,5 +1,4 @@
 import logo from '../img/logo.gif'
-
 function App(){
     return(
         <div className="App">
