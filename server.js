@@ -1,5 +1,7 @@
+const cors = require('cors')
 const express = require('express')
 const app = express()
+app.use(cors())
 const http = require('http')
 const server = http.createServer(app)
 
@@ -11,6 +13,7 @@ app.get('/gete',(req,res)=>{
     res.send('Hello Sir')
 })
 
-server.listen(4000, () => {
-    console.log('Servidor local rodando na porta 4000')
+
+server.listen(3001, () => {
+    console.log('Servidor local rodando na porta 3001')
 })
