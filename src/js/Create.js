@@ -14,6 +14,25 @@ async function submit(e){
     document.getElementById("lblName").innerHTML=get.data.name
 }
 
+async function render(){
+    const get = await api.get('/patients')
+    const patients = get.data
+
+    const tbody = document.querySelector(`table tbody`)
+    tbody.innerHTML=""
+    patients.forEach((patient)=>{
+        const tr = document.createElement("tr")
+        tr.innerHTML=`
+            <td>${patient.nome}</td>
+            <td>${patient.cpf}</td>
+            <td>${patient.wpp}</td>
+        `
+        tbody.appendChild(tr)
+    })
+}
+
+document.addEventListener("DOMContentLoaded",render)
+
 function Create(){
     return(
         <div>
@@ -28,6 +47,18 @@ function Create(){
                 <label id="lblEmail"></label>
                 <label id="lblPassword"></label>
             </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>Telefone</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
         </div>
     )
 }
