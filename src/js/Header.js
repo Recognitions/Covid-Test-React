@@ -6,7 +6,7 @@ const api = axios.create({
 async function yeah(e){
     e.preventDefault()
     const get = await api.get('/gete')
-    console.log(get)
+    console.log(get.data)
 }
 
 function Header(){
