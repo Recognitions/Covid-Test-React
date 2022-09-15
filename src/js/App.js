@@ -3,14 +3,15 @@ import { BrowserRouter as Router, Routes, Route}
 import logo from '../img/logo.gif'
 import Home from './Home'
 import Create from './Create'
+import { Redirect } from 'react-router';
 
 function App(){
     return(
         <Router>
-        <Routes>
-            <Route exact path='/' element={<Home />} />
-            <Route exact path='/teste' element={<Teste />} />
-        </Routes>
+            <Routes>
+                <Route exact path='/' element={<Home />} />
+                <Route exact path='/cadastro' element={<Create />} />
+            </Routes>
         </Router>
     )
 }
