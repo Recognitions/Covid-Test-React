@@ -5,13 +5,15 @@ const api = axios.create({
 
 async function submit(e){
     e.preventDefault()
-    const name = document.getElementById("name").value
-    const email = document.getElementById("email").value
-    const password = document.getElementById("password").value
+    const nome = document.getElementById("nome").value
+    const cpf = document.getElementById("cpf").value
+    const wpp = document.getElementById("wpp").value
+    const nasc = document.getElementById("nasc").value
+    const foto = document.getElementById("foto").value
 
-    const get = await api.get(`/submit/${name}/${email}/${password}`)
+    const get = await api.get(`/submit/${nome}/${cpf}/${wpp}/${nasc}/${foto}`)
     console.log(get.data)
-    document.getElementById("lblName").innerHTML=get.data.name
+    render()
 }
 
 async function render(){
@@ -37,9 +39,11 @@ function Create(){
     return(
         <div>
             <form method="get" onSubmit={submit}>
-                <input type="text" id="name" placeholder="Nome"/>
-                <input type="email" id="email" placeholder="Email"/>
-                <input type="password" id="password" placeholder="Senha"/>
+                <input type="text" id="nome" placeholder="Nome"/>
+                <input type="text" id="cpf" placeholder="Nome"/>
+                <input type="text" id="wpp" placeholder="Nome"/>
+                <input type="date" id="nasc"/>
+                <input type="text" id="foto" placeholder="Nome"/>
                 <input type="submit" id="input" value="Cadastrar"/>
             </form>
             <div>

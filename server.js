@@ -25,15 +25,14 @@ app.get('/patients',(req,res)=>{
     })
 })
 
-app.get('/submit/:nome/:cpf/:wpp/:nasc/:foto/:estado',(req,res)=>{
+app.get('/submit/:nome/:cpf/:wpp/:nasc/:foto',(req,res)=>{
     const nome = req.params.nome
     const cpf = req.params.cpf
     const wpp = req.params.wpp
     const nasc = req.params.nasc
     const foto = req.params.foto
-    const estado = req.params.estado
 
-    const sql = `INSERT INTO pacientes(nome,cpf,wpp,nasc,foto,estado) VALUES('${nome}','${cpf}','${wpp}','${nasc}','${foto}',${estado})`
+    const sql = `INSERT INTO pacientes(nome,cpf,wpp,nasc,foto,estado) VALUES('${nome}','${cpf}','${wpp}','${nasc}','${foto}',0)`
     con.query(sql,(err,rows,fields)=>{
         res.send(rows)
         return rows
