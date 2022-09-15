@@ -13,6 +13,20 @@ app.get('/gete',(req,res)=>{
     res.send('Hello Sir')
 })
 
+app.get('/submit/:name/:email/:password',(req,res)=>{
+    const name = req.params.name
+    const email = req.params.email
+    const password = req.params.password
+
+    const user = {
+        name: name,
+        email: email,
+        password, password
+    }
+
+    res.send(user)
+})
+
 
 server.listen(3001, () => {
     console.log('Servidor local rodando na porta 3001')

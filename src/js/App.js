@@ -1,13 +1,17 @@
+import { BrowserRouter as Router, Routes, Route}
+    from 'react-router-dom';
 import logo from '../img/logo.gif'
+import Home from './Home'
+import Create from './Create'
+
 function App(){
     return(
-        <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo"/>
-                <h1>{"Horário"}</h1>
-                <h2>{new Date().toLocaleTimeString()}.</h2>
-            </header>
-        </div>
+        <Router>
+        <Routes>
+            <Route exact path='/' element={<Home />} />
+            <Route exact path='/teste' element={<Teste />} />
+        </Routes>
+        </Router>
     )
 }
 
