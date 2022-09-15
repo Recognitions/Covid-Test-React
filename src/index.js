@@ -4,6 +4,7 @@ import './style.css'
 import Header from './js/Header'
 import App from './js/App'
 import Footer from './js/Footer'
+import Teste from './js/Teste'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 function Render(){
