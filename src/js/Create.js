@@ -17,7 +17,7 @@ async function submit(e){
 async function render(){
     const get = await api.get('/patients')
     const patients = get.data
-
+    console.log(patients)
     const tbody = document.querySelector(`table tbody`)
     tbody.innerHTML=""
     patients.forEach((patient)=>{

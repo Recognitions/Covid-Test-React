@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route}
 import logo from '../img/logo.gif'
 import Home from './Home'
 import Create from './Create'
-import { Redirect } from 'react-router';
 
 function App(){
     return(

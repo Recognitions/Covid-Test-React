@@ -1,8 +1,10 @@
+import Button from './components/Button'
+
 function Header(){
     return(
         <header>
-            <a href="/"><button>Home</button></a>
-            <a href="/cadastro"><button>Cadastro</button></a>
+            <a href="/"><Button title="Home"/></a>
+            <a href="/cadastro"><Button title="Cadastro"/></a>
         </header>
     )
 }
