@@ -12,10 +12,12 @@ async function info(){
     document.querySelector("#qtdPatients").innerHTML=patients.length
 }
 
-const url = window.location.href
-if(url.split("/")[3]!="cadastro"){
-    document.addEventListener("DOMContentLoaded",info)
-}
+document.addEventListener("DOMContentLoaded",()=>{
+    const url = window.location.href
+    if(url.split("/")[3]!="cadastro"){
+        info()
+    }
+})
 
 function Home(){
     return(

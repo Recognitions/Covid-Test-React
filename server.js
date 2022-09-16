@@ -51,7 +51,6 @@ app.get('/submit/:nome/:cpf/:wpp/:nasc',(req,res)=>{
     const wpp = req.params.wpp
     const nasc = req.params.nasc
     const foto = "foto.png"
-
     const select = `SELECT * FROM pacientes WHERE cpf='${cpf}'`
     con.query(select,(err,rows,fields)=>{
         if(rows==0){
@@ -62,9 +61,6 @@ app.get('/submit/:nome/:cpf/:wpp/:nasc',(req,res)=>{
         console.log(rows)
         return rows
     })
-
-    
-
 })
 
 server.listen(3001, () => {

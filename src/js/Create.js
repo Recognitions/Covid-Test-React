@@ -12,10 +12,13 @@ async function submit(e){
     const wpp = document.getElementById("wpp")
     const nasc = document.getElementById("nasc")
 
-
     const get = await api.get(`/submit/${nome.value}/${cpf.value}/${wpp.value}/${nasc.value}`)
-    document.querySelector(".patients form").reset()
-    render()
+    if((get.data).length==0){
+        document.querySelector(".patients form").reset()
+        render()
+    }else{
+        alert("Impossível cadastrar paciente")
+    }
 }
 
 async function del(id){
@@ -24,7 +27,7 @@ async function del(id){
 
 async function render(){
     const get = await api.get('/patients')
-    const patients = get.data
+    const patients = get.data ? (get.data).sort((a,b)=>{return b.id - a.id}) : []
     const tbody = document.querySelector(`#tablePatients tbody`)
     tbody.innerHTML=""
     patients.forEach((patient)=>{
@@ -45,7 +48,6 @@ async function render(){
         })
     })
 }
-
 
 document.addEventListener("DOMContentLoaded",()=>{
     const url = window.location.href
@@ -79,9 +81,7 @@ function Create(){
                         <th>Ações</th>
                     </tr>
                 </thead>
-                <tbody>
-                    
-                </tbody>
+                <tbody></tbody>
             </table>
         </div>
     )
