@@ -38,6 +38,7 @@ async function render(){
             <td>${patient.nome}</td>
             <td>${patient.cpf}</td>
             <td>${patient.wpp}</td>
+            <td>${patient.nasc}</td>
             <td>
                 <Input type="button" id="DEL${patient.id}" value="Deletar"/>
             </td>
@@ -79,11 +80,18 @@ function Create(){
                         <th>Nome</th>
                         <th>CPF</th>
                         <th>Telefone</th>
+                        <th>Idade</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
             </table>
+            <div>
+                <Input type="button" value="1"/>
+                <Input type="button" value="2"/>
+                <Input type="button" value="3"/>
+                <Input type="button" value="4"/>
+            </div>
         </div>
     )
 }

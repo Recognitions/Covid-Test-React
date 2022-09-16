@@ -16,6 +16,9 @@ document.addEventListener("DOMContentLoaded",()=>{
     const url = window.location.href
     if(url.split("/")[3]!="cadastro"){
         info()
+        setInterval(()=>{
+            info() //Atualiza o número de pacientes em tempo real
+        },1000)
     }
 })
 
