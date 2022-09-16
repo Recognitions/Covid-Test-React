@@ -7,12 +7,14 @@ const api = axios.create({
 
 async function submit(e){
     e.preventDefault()
-    const nome = document.getElementById("nome").value
-    const cpf = document.getElementById("cpf").value
-    const wpp = document.getElementById("wpp").value
-    const nasc = document.getElementById("nasc").value
+    const nome = document.getElementById("nome")
+    const cpf = document.getElementById("cpf")
+    const wpp = document.getElementById("wpp")
+    const nasc = document.getElementById("nasc")
 
-    const get = await api.get(`/submit/${nome}/${cpf}/${wpp}/${nasc}`)
+
+    const get = await api.get(`/submit/${nome.value}/${cpf.value}/${wpp.value}/${nasc.value}`)
+    document.querySelector(".patients form").reset()
     render()
 }
 
@@ -44,15 +46,21 @@ async function render(){
     })
 }
 
-document.addEventListener("DOMContentLoaded",render)
+
+document.addEventListener("DOMContentLoaded",()=>{
+    const url = window.location.href
+    if(url.split("/")[3]=="cadastro"){
+        render()
+    }
+})
 
 function Create(){
     return(
         <div className="patients">
             <form method="get" onSubmit={submit} encType="multipart/form-data">
-                <Input type="text" id="nome" placeholder="Nome"/>
-                <Input type="text" id="cpf" placeholder="CPF"/>
-                <Input type="text" id="wpp" placeholder="Whatsapp"/>
+                <Input type="text" id="nome" placeholder="Nome" maxLength="50" />
+                <Input type="text" id="cpf" placeholder="CPF" minLength="14" maxLength="14"/>
+                <Input type="text" id="wpp" placeholder="Whatsapp" minLength="14" maxLength="14"/>
                 <Input type="date" id="nasc"/>
                 <Input type="submit" id="input" value="Cadastrar"/>
             </form>
