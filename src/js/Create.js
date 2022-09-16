@@ -16,6 +16,10 @@ async function submit(e){
     render()
 }
 
+async function del(id){
+    const get = await api.get(`/patient/delete/${id}`)
+}
+
 async function render(){
     const get = await api.get('/patients')
     const patients = get.data
@@ -28,8 +32,15 @@ async function render(){
             <td>${patient.nome}</td>
             <td>${patient.cpf}</td>
             <td>${patient.wpp}</td>
+            <td>
+                <Input type="button" id="DEL${patient.id}" value="Deletar"/>
+            </td>
         `
         tbody.appendChild(tr)
+        document.querySelector(`#DEL${patient.id}`).addEventListener("click",()=>{
+            del(patient.id)
+            render()
+        })
     })
 }
 
@@ -57,6 +68,7 @@ function Create(){
                         <th>Nome</th>
                         <th>CPF</th>
                         <th>Telefone</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>

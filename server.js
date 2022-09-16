@@ -36,6 +36,15 @@ app.get('/patient/:id',(req,res)=>{
     })
 })
 
+app.get('/patient/delete/:id',(req,res)=>{
+    const id = req.params.id
+    const sql = `DELETE FROM pacientes WHERE id=${id}`
+    con.query(sql,(err,rows,field)=>{
+        res.send(rows)
+        return rows
+    })
+})
+
 app.get('/submit/:nome/:cpf/:wpp/:nasc',(req,res)=>{
     const nome = req.params.nome
     const cpf = req.params.cpf
