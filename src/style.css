@@ -1,52 +1,79 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+*{
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    outline: none;
 }
+:root{
+    --button1: blue;
+    --text1: #f8f8f8;
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+    --button2: rgb(255, 192, 76);
 }
-
-.App {
-  text-align: center;
+body{
+    overflow-x: hidden;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#root{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
 }
+header{
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+header button{
+    background-color: var(--button1);
+    color: var(--text1);
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid var(--button1);
+    margin: 2px;
+    cursor: pointer;
+    transition: ease 0.1s;
 }
-
-.App-link {
-  color: #61dafb;
+header button:hover{
+    background-color: var(--text1);
+    color: var(--button1);
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.patients{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.patients form{
+    width: 50%;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}.patients form input{
+    font-size: 14px;
+    border: 0px;
+    padding: 20px;
+    background-color: rgba(0,0,0,0.025);
+    border-bottom: 2px solid rgba(0,0,0,0.025);
+}.patients form input:focus{
+    border-bottom: 2px solid var(--button1);
+}.patients form input[type=submit]{
+    background-color: var(--button2);
+    color: var(--text1);
+    border-radius: 10px;
+    font-size: 20px;
+    border: 1px solid var(--button2);
+    padding: 8px;
+    cursor: pointer;
+    transition: 0s;
+}.patients form input[type=submit]:hover{
+    filter: contrast(1.2);
+}
+footer{
+    width: 100%;
+    padding: 2px;
+    background-color: var(--button1);
+}
+#tablePatients{
+    margin: 5px;
+    width: 100%;
 }

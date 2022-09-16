@@ -19,7 +19,7 @@ async function submit(e){
 async function render(){
     const get = await api.get('/patients')
     const patients = get.data
-    const tbody = document.querySelector(`table tbody`)
+    const tbody = document.querySelector(`#tablePatients tbody`)
     tbody.innerHTML=""
     patients.forEach((patient)=>{
         const tr = document.createElement("tr")
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded",render)
 
 function Create(){
     return(
-        <div>
+        <div className="patients">
             <form method="get" onSubmit={submit} encType="multipart/form-data">
                 <Input type="text" id="nome" placeholder="Nome"/>
                 <Input type="text" id="cpf" placeholder="CPF"/>
@@ -50,7 +50,7 @@ function Create(){
                 <label id="lblEmail"></label>
                 <label id="lblPassword"></label>
             </div>
-            <table>
+            <table id="tablePatients">
                 <thead>
                     <tr>
                         <th></th>
