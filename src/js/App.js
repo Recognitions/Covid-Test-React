@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Routes, Route}
     from 'react-router-dom';
-import logo from '../img/logo.gif'
 import Home from './Home'
 import Create from './Create'
 
