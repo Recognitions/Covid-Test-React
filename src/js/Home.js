@@ -9,7 +9,7 @@ async function info(){
     const get = await api.get('/patients')
     const patients = get.data
 
-    document.querySelector("#qtdPatients").innerHTML=patients.length
+    document.querySelector("#qtdPatients").innerHTML=`<h2>${patients.length}</h2>`
 }
 
 document.addEventListener("DOMContentLoaded",()=>{
@@ -24,11 +24,11 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 function Home(){
     return(
-        <section>
+        <section id="home">
             <table>
                 <thead>
                     <tr>
-                        <th>Pacientes</th>
+                        <th><h1>Pacientes</h1></th>
                     </tr>
                 </thead>
                 <tbody>
