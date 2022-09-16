@@ -11,13 +11,14 @@ async function submit(e){
     const cpf = document.getElementById("cpf")
     const wpp = document.getElementById("wpp")
     const nasc = document.getElementById("nasc")
-
-    const get = await api.get(`/submit/${nome.value}/${cpf.value}/${wpp.value}/${nasc.value}`)
-    if((get.data).length==0){
-        document.querySelector(".patients form").reset()
-        render()
-    }else{
-        alert("Impossível cadastrar paciente")
+    if(nome.value!=""&&cpf.value!=""&&wpp.value!=""&&nasc.value!=""){
+        const get = await api.get(`/submit/${nome.value}/${cpf.value}/${wpp.value}/${nasc.value}`)
+        if((get.data).length==0){
+            document.querySelector(".patients form").reset()
+            render()
+        }else{
+            alert("Impossível cadastrar paciente")
+        }
     }
 }
 
