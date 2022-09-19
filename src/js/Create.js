@@ -1,5 +1,6 @@
 import axios from 'axios'
 import Input from './components/Input'
+import {Modal,openModal,closeModal} from './components/Modal'
 
 const api = axios.create({
     baseURL: "http://localhost:3001"
@@ -26,6 +27,7 @@ async function del(id){
     const get = await api.get(`/patient/delete/${id}`)
 }
 
+
 async function render(){
     const get = await api.get('/patients')
     const patients = get.data ? (get.data).sort((a,b)=>{return b.id - a.id}) : []
@@ -40,12 +42,27 @@ async function render(){
             <td>${patient.wpp}</td>
             <td>${patient.nasc}</td>
             <td>
+                <Input type="button" id="EDIT${patient.id}" value="Editar"/>
                 <Input type="button" id="DEL${patient.id}" value="Deletar"/>
             </td>
         `
         tbody.appendChild(tr)
         document.querySelector(`#DEL${patient.id}`).addEventListener("click",()=>{
             del(patient.id)
+            render()
+        })
+        document.querySelector(`#EDIT${patient.id}`).addEventListener("click",()=>{
+            const editName = document.getElementById("editName")
+            const editCPF = document.getElementById("editCPF")
+            const editWPP = document.getElementById("editWPP")
+            const editDate = document.getElementById("editDate")
+
+            editName.value = patient.nome
+            editCPF.value = patient.cpf
+            editWPP.value = patient.wpp
+            editDate.value = patient.nasc
+
+            openModal()
             render()
         })
     })
@@ -92,6 +109,7 @@ function Create(){
                 <Input type="button" value="3"/>
                 <Input type="button" value="4"/>
             </div>
+            <Modal/>
         </div>
     )
 }
