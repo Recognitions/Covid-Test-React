@@ -1,10 +1,24 @@
 import Input from './Input'
+import api from './Axios'
+import {render} from '../Create'
 
 async function edit(e){
     e.preventDefault()
+    const editForm = document.getElementById("editForm").dataset.id
     const editName = document.getElementById("editName")
     const editCPF = document.getElementById("editCPF")
     const editWPP = document.getElementById("editWPP")
+    const editData = document.getElementById("editData")
+    const patient = {
+        id: editForm,
+        name: editName.value,
+        cpf: editCPF.value,
+        wpp: editWPP.value,
+        nasc: editData.value,
+    }
+    const update = await api.get(`/patient/edit/${patient.id}/${patient.name}/${patient.cpf}/${patient.wpp}/${patient.nasc}`)
+    console.log(update.data)
+    render()
 }
 
 export function openModal(){
@@ -18,7 +32,7 @@ export function closeModal(){
 export function Modal(props){
     return(
         <section className="modal">
-            <form onSubmit={edit}>
+            <form id="editForm" onSubmit={edit}>
                 <b>Nome completo</b>
                 <Input type="text" id="editName"/><br/>
                 <b>CPF</b>
@@ -26,7 +40,7 @@ export function Modal(props){
                 <b>Contato</b>
                 <Input type="text" id="editWPP" minLength="14" maxLength="14"/><br/>
                 <b>Data de nascimento</b>
-                <Input type="date" id="editDate"/><br/>
+                <Input type="date" id="editData"/><br/>
                 <Input type="submit"/>
                 <Input type="reset" onClick={closeModal} id="closeModal" value="Cancelar"/>
             </form>

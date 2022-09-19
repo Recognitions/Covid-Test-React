@@ -20,8 +20,8 @@ app.get('/', (req, res) => {
 })
 
 app.get('/patients',(req,res)=>{
-    const sql = `SELECT * FROM pacientes`
-    con.query(sql,(err,rows,fields)=>{
+    const select = `SELECT * FROM pacientes`
+    con.query(select,(err,rows,fields)=>{
         res.send(rows)
         return rows
     })
@@ -29,19 +29,31 @@ app.get('/patients',(req,res)=>{
 
 app.get('/patient/:id',(req,res)=>{
     const id = req.params.id
-    const sql = `SELECT * FROM pacientes WHERE id=${id}`
-    con.query(sql,(err,rows,field)=>{
+    const select = `SELECT * FROM pacientes WHERE id=${id}`
+    con.query(select,(err,rows,field)=>{
         res.send(rows)
-        return rows
     })
 })
 
 app.get('/patient/delete/:id',(req,res)=>{
     const id = req.params.id
-    const sql = `DELETE FROM pacientes WHERE id=${id}`
-    con.query(sql,(err,rows,field)=>{
+    const delet = `DELETE FROM pacientes WHERE id=${id}`
+    con.query(delet,(err,rows,field)=>{
         res.send(rows)
-        return rows
+        console.log(rows)
+    })
+})
+
+app.get('/patient/edit/:id/:nome/:cpf/:wpp/:nasc',(req,res)=>{
+    const id = req.params.id
+    const nome = req.params.nome
+    const cpf = req.params.cpf
+    const wpp = req.params.wpp
+    const nasc = req.params.nasc
+    const update = `UPDATE pacientes SET nome='${nome}',cpf='${cpf}',wpp='${wpp}',nasc='${nasc}' WHERE id=${id}`
+    con.query(update,(err,rows,field)=>{
+        res.send(rows)
+        console.log(rows)
     })
 })
 
@@ -54,12 +66,11 @@ app.get('/submit/:nome/:cpf/:wpp/:nasc',(req,res)=>{
     const select = `SELECT * FROM pacientes WHERE cpf='${cpf}'`
     con.query(select,(err,rows,fields)=>{
         if(rows==0){
-            const sql = `INSERT INTO pacientes(nome,cpf,wpp,nasc,foto,estado) VALUES('${nome}','${cpf}','${wpp}','${nasc}','${foto}',0)`
-            con.query(sql)
+            const insert = `INSERT INTO pacientes(nome,cpf,wpp,nasc,foto,estado) VALUES('${nome}','${cpf}','${wpp}','${nasc}','${foto}',0)`
+            con.query(insert)
         }
         res.send(rows)
         console.log(rows)
-        return rows
     })
 })
 

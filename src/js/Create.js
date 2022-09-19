@@ -28,7 +28,7 @@ async function del(id){
 }
 
 
-async function render(){
+export async function render(){
     const get = await api.get('/patients')
     const patients = get.data ? (get.data).sort((a,b)=>{return b.id - a.id}) : []
     const tbody = document.querySelector(`#tablePatients tbody`)
@@ -52,18 +52,19 @@ async function render(){
             render()
         })
         document.querySelector(`#EDIT${patient.id}`).addEventListener("click",()=>{
+            const editForm = document.getElementById("editForm")
             const editName = document.getElementById("editName")
             const editCPF = document.getElementById("editCPF")
             const editWPP = document.getElementById("editWPP")
-            const editDate = document.getElementById("editDate")
+            const editData = document.getElementById("editData")
 
             editName.value = patient.nome
             editCPF.value = patient.cpf
             editWPP.value = patient.wpp
-            editDate.value = patient.nasc
+            editData.value = patient.nasc
+            editForm.dataset.id = patient.id
 
             openModal()
-            render()
         })
     })
 }

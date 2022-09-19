@@ -24,7 +24,16 @@ function format(input){
 
 function Input(props){
     return(
-        <input onKeyDown={format} onClick={props.onClick} type={props.type} id={props.id} placeholder={props.placeholder} value={props.value} minLength={props.minLength} maxLength={props.maxLength}/>
+        <input 
+            id={props.id}
+            type={props.type}
+            onKeyDown={format} 
+            value={props.value}
+            onClick={props.onClick}
+            minLength={props.minLength}
+            maxLength={props.maxLength}
+            placeholder={props.placeholder}
+        />
     )
 }
 
