@@ -1,7 +1,8 @@
 import api from './components/Axios'
 import Input from './components/Input'
-import {Modal,openModal,closeModal} from './components/Modal'
+import {Modal,openModal} from './components/Modal'
 import state from './components/State'
+import {Consult,openConsult} from './components/Consult'
 
 async function submit(e){
     e.preventDefault()
@@ -38,12 +39,21 @@ export async function render(){
             <td>${patient.wpp}</td>
             <td>${patient.nasc}</td>
             <td>${state[patient.estado]}</td>
-            <td>
+            <td class="inputArea">
+                <Input type="button" id="ATEN${patient.id}" value="Atender"/>
                 <Input type="button" id="EDIT${patient.id}" value="Editar"/>
                 <Input type="button" id="DEL${patient.id}" value="Deletar"/>
             </td>
         `
         tbody.appendChild(tr)
+        document.querySelector(`#ATEN${patient.id}`).addEventListener("click",()=>{
+            const consultForm = document.getElementById("consultForm")
+            consultForm.dataset.id = patient.id
+            consultForm.dataset.result = ""
+            consultForm.dataset.symp = ""
+            consultForm.dataset.sympPlus = ""
+            openConsult()
+        })
         document.querySelector(`#DEL${patient.id}`).addEventListener("click",()=>{
             del(patient.id)
             render()
@@ -109,6 +119,7 @@ function Create(){
                 <Input type="button" value="4"/>
             </div>
             <Modal/>
+            <Consult/>
         </div>
     )
 }

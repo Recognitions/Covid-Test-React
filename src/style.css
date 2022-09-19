@@ -79,7 +79,11 @@ footer{
 }
 #tablePatients{
     margin: 5px;
-    width: 100%;
+    width: 95%;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.2);
 }
 
 #home table th{
@@ -103,7 +107,7 @@ footer{
     filter: contrast(2);
 }
 
-.modal{
+.modal,.modal2{
     position: fixed;
     top: 0px;
     width: 100%;
@@ -115,8 +119,29 @@ footer{
     justify-content: center;
     visibility: hidden;
 }
-.modal form{
+.modal form,.modal2 form{
     background-color: white;
     padding: 20px;
     border-radius: 10px;
 }
+
+.inputArea{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+}.inputArea input{
+    font-size: 15px;
+    border-radius: 5px;
+    border: 0px;
+    margin: 2px;
+    padding: 8px;
+    cursor: pointer;
+    color: white;
+}.inputArea input[value=Atender]{
+    background-color: rgb(65, 161, 65);
+}.inputArea input[value=Editar]{
+    background-color: rgb(94, 94, 186);
+}.inputArea input[value=Deletar]{
+    background-color: rgb(189, 75, 75);
+}
+
