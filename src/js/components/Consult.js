@@ -14,8 +14,10 @@ async function consult(e){
     console.log(consultForm,result,patientSymp,sympPlus)
 
     const consult = await api.get(`/patient/consult/${consultForm}/${result}/${patientSymp}/${sympPlus}`)
-    console.log(consult.data)
-    render()
+    if(consult.data){
+        alert("Paciente consultado!")
+        render()
+    }
 }
 
 export function openConsult(){

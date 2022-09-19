@@ -23,7 +23,7 @@ app.get('/patients',(req,res)=>{
     const select = `SELECT * FROM pacientes`
     con.query(select,(err,rows,fields)=>{
         res.send(rows)
-        return rows
+        console.log(rows)
     })
 })
 

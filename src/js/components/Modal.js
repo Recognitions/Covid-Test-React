@@ -1,6 +1,7 @@
 import Input from './Input'
 import api from './Axios'
 import {render} from '../Create'
+import CPF from './CPF'
 
 async function edit(e){
     e.preventDefault()
@@ -17,8 +18,17 @@ async function edit(e){
         nasc: editData.value,
     }
     const update = await api.get(`/patient/edit/${patient.id}/${patient.name}/${patient.cpf}/${patient.wpp}/${patient.nasc}`)
-    console.log(update.data)
-    render()
+    if(CPF(editCPF.value)==true){
+        if(update.data){
+            alert("Paciente editado!")
+            render()
+        }else{
+            alert("Impossível editar paciente!")
+        }
+    }else{
+        alert("CPF inválido!")
+    }
+
 }
 
 export function openModal(){

@@ -3,6 +3,7 @@ import Input from './components/Input'
 import {Modal,openModal} from './components/Modal'
 import state from './components/State'
 import {Consult,openConsult} from './components/Consult'
+import CPF from './components/CPF'
 
 async function submit(e){
     e.preventDefault()
@@ -11,13 +12,18 @@ async function submit(e){
     const wpp = document.getElementById("wpp")
     const nasc = document.getElementById("nasc")
     if(nome.value!=""&&cpf.value!=""&&wpp.value!=""&&nasc.value!=""){
-        const get = await api.get(`/submit/${nome.value}/${cpf.value}/${wpp.value}/${nasc.value}`)
-        if((get.data).length==0){
-            document.querySelector(".patients form").reset()
-            render()
+        if(CPF(cpf.value)==true){
+            const get = await api.get(`/submit/${nome.value}/${cpf.value}/${wpp.value}/${nasc.value}`)
+            if((get.data).length==0){
+                document.querySelector(".patients form").reset()
+                render()
+            }else{
+                alert("Impossível cadastrar paciente")
+            }
         }else{
-            alert("Impossível cadastrar paciente")
+            alert("CPF inválido!")
         }
+
     }
 }
 
