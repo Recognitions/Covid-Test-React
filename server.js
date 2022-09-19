@@ -50,10 +50,15 @@ app.get('/patient/edit/:id/:nome/:cpf/:wpp/:nasc',(req,res)=>{
     const cpf = req.params.cpf
     const wpp = req.params.wpp
     const nasc = req.params.nasc
-    const update = `UPDATE pacientes SET nome='${nome}',cpf='${cpf}',wpp='${wpp}',nasc='${nasc}' WHERE id=${id}`
-    con.query(update,(err,rows,field)=>{
-        res.send(rows)
-        console.log(rows)
+    const select = `SELECT * FROM pacientes WHERE cpf='${cpf}'`
+    con.query(select,(err,rows,field)=>{
+        if(rows==0){
+            const update = `UPDATE pacientes SET nome='${nome}',cpf='${cpf}',wpp='${wpp}',nasc='${nasc}' WHERE id=${id}`
+            con.query(update,(err,rows,field)=>{
+                res.send(rows)
+                console.log(rows)
+            })
+        }
     })
 })
 
