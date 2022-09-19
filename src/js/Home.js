@@ -1,9 +1,5 @@
-import axios from 'axios'
+import api from './components/Axios'
 import Input from './components/Input'
-
-const api = axios.create({
-    baseURL: "http://localhost:3001"
-})
 
 async function info(){
     const get = await api.get('/patients')

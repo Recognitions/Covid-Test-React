@@ -1,10 +1,7 @@
-import axios from 'axios'
+import api from './components/Axios'
 import Input from './components/Input'
 import {Modal,openModal,closeModal} from './components/Modal'
-
-const api = axios.create({
-    baseURL: "http://localhost:3001"
-})
+import state from './components/State'
 
 async function submit(e){
     e.preventDefault()
@@ -27,7 +24,6 @@ async function del(id){
     const get = await api.get(`/patient/delete/${id}`)
 }
 
-
 export async function render(){
     const get = await api.get('/patients')
     const patients = get.data ? (get.data).sort((a,b)=>{return b.id - a.id}) : []
@@ -41,6 +37,7 @@ export async function render(){
             <td>${patient.cpf}</td>
             <td>${patient.wpp}</td>
             <td>${patient.nasc}</td>
+            <td>${state[patient.estado]}</td>
             <td>
                 <Input type="button" id="EDIT${patient.id}" value="Editar"/>
                 <Input type="button" id="DEL${patient.id}" value="Deletar"/>
@@ -99,6 +96,7 @@ function Create(){
                         <th>CPF</th>
                         <th>Telefone</th>
                         <th>Idade</th>
+                        <th>Estado</th>
                         <th>Ações</th>
                     </tr>
                 </thead>

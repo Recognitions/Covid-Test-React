@@ -6,14 +6,10 @@ import Footer from './js/Footer'
 import App from './js/App'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
-function Render(){
-    root.render(
-        <React.StrictMode>
-            <Header/>
-            <App/>
-            <Footer/>
-        </React.StrictMode>
-    )
-}
-Render()
-//setInterval(Render, 1000);
+root.render(
+    <React.StrictMode>
+        <Header/>
+        <App/>
+        <Footer/>
+    </React.StrictMode>
+)

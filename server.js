@@ -66,7 +66,7 @@ app.get('/submit/:nome/:cpf/:wpp/:nasc',(req,res)=>{
     const select = `SELECT * FROM pacientes WHERE cpf='${cpf}'`
     con.query(select,(err,rows,fields)=>{
         if(rows==0){
-            const insert = `INSERT INTO pacientes(nome,cpf,wpp,nasc,foto,estado) VALUES('${nome}','${cpf}','${wpp}','${nasc}','${foto}',0)`
+            const insert = `INSERT INTO pacientes(nome,cpf,wpp,nasc,foto,estado) VALUES('${nome}','${cpf}','${wpp}','${nasc}','${foto}',3)`
             con.query(insert)
         }
         res.send(rows)
