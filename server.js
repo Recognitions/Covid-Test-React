@@ -80,13 +80,13 @@ app.get('/patient/consult/:id/:result/:symp/:sympPlus',(req,res)=>{
     const symp = req.params.symp
     const sympPlus = req.params.sympPlus
     
-    const select = `SELECT * FROM atendimentos WHERE id=${id}`
+    const select = `SELECT * FROM atendimentos WHERE idPaciente=${id}`
     con.query(select,(err,rows,field)=>{
         let sql
         if(rows==0){
             sql = `INSERT INTO atendimentos(idPaciente,resultado,lista,sintomas) VALUES(${id},${result},'${symp}',${sympPlus})`
         }else{
-            sql = `UPDATE atendimentos SET idPaciente=(${id},resultado=${result},lista='${symp}',sintomas=${sympPlus})`
+            sql = `UPDATE atendimentos SET resultado=${result},lista='${symp}',sintomas=${sympPlus} WHERE idPaciente=${id}`
         }
         con.query(sql,(err,rows,field)=>{
             const update = `UPDATE pacientes SET estado=${result} WHERE id=${id}`
