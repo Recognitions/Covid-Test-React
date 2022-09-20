@@ -99,30 +99,27 @@ function Create(){
                 <Input type="date" id="nasc"/>
                 <Input type="submit" id="input" value="Cadastrar"/>
             </form>
-            <div>
-                <label id="lblName"></label>
-                <label id="lblEmail"></label>
-                <label id="lblPassword"></label>
-            </div>
-            <table id="tablePatients">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Nome</th>
-                        <th>CPF</th>
-                        <th>Telefone</th>
-                        <th>Idade</th>
-                        <th>Estado</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-            <div>
-                <Input type="button" value="1"/>
-                <Input type="button" value="2"/>
-                <Input type="button" value="3"/>
-                <Input type="button" value="4"/>
+            <div className="divPatients">
+                <div className="divInputs">
+                    <Input type="button" value="1"/>
+                    <Input type="button" value="2"/>
+                    <Input type="button" value="3"/>
+                    <Input type="button" value="4"/>
+                </div>
+                <table id="tablePatients">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Nome</th>
+                            <th>CPF</th>
+                            <th>Telefone</th>
+                            <th>Idade</th>
+                            <th>Estado</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
             </div>
             <Modal/>
             <Consult/>

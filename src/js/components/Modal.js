@@ -17,8 +17,8 @@ async function edit(e){
         wpp: editWPP.value,
         nasc: editData.value,
     }
-    const update = await api.get(`/patient/edit/${patient.id}/${patient.name}/${patient.cpf}/${patient.wpp}/${patient.nasc}`)
     if(CPF(editCPF.value)==true){
+        const update = await api.get(`/patient/edit/${patient.id}/${patient.name}/${patient.cpf}/${patient.wpp}/${patient.nasc}`)
         if(update.data){
             alert("Paciente editado!")
             render()

@@ -23,7 +23,7 @@ app.get('/patients',(req,res)=>{
     const select = `SELECT * FROM pacientes`
     con.query(select,(err,rows,fields)=>{
         res.send(rows)
-        console.log(rows)
+        //console.log(rows)
     })
 })
 
@@ -40,7 +40,7 @@ app.get('/patient/delete/:id',(req,res)=>{
     const delet = `DELETE FROM pacientes WHERE id=${id}`
     con.query(delet,(err,rows,field)=>{
         res.send(rows)
-        console.log(rows)
+        //console.log(rows)
     })
 })
 
@@ -52,7 +52,7 @@ app.get('/patient/edit/:id/:nome/:cpf/:wpp/:nasc',(req,res)=>{
     const nasc = req.params.nasc
     const select = `SELECT * FROM pacientes WHERE cpf='${cpf}'`
     con.query(select,(err,rows,field)=>{
-        if(rows==0){
+        if(rows){
             const update = `UPDATE pacientes SET nome='${nome}',cpf='${cpf}',wpp='${wpp}',nasc='${nasc}' WHERE id=${id}`
             con.query(update,(err,rows,field)=>{
                 res.send(rows)
