@@ -4,6 +4,7 @@ import {Modal,openModal} from './components/Modal'
 import state from './components/State'
 import {Consult,openConsult} from './components/Consult'
 import CPF from './components/CPF'
+import pagination from './components/Pagination'
 
 async function submit(e){
     e.preventDefault()
@@ -31,12 +32,20 @@ async function del(id){
     const get = await api.get(`/patient/delete/${id}`)
 }
 
+function fillInputs(){
+    
+}
+
 export async function render(){
     const get = await api.get('/patients')
     const patients = get.data ? (get.data).sort((a,b)=>{return b.id - a.id}) : []
+    const pagesCount = Math.floor((patients.length)/5)
+    console.log(pagesCount)
+    const page = pagination(patients,1,5)
+
     const tbody = document.querySelector(`#tablePatients tbody`)
     tbody.innerHTML=""
-    patients.forEach((patient)=>{
+    page.forEach((patient)=>{
         const tr = document.createElement("tr")
         tr.innerHTML=`
             <td><img src="../img/patients/none.jpg" width="30"></td>
