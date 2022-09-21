@@ -1,5 +1,6 @@
 import {v4 as uuidv4} from 'uuid'
 import {render} from '../Create'
+
 function fillInputs(pagesCount,limit){
     const divInputs = document.querySelector("#divInputs")
     divInputs.innerHTML=""
