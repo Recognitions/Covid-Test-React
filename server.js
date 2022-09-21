@@ -37,10 +37,12 @@ app.get('/patient/:id',(req,res)=>{
 
 app.get('/patient/delete/:id',(req,res)=>{
     const id = req.params.id
-    const delet = `DELETE FROM pacientes WHERE id=${id}`
-    con.query(delet,(err,rows,field)=>{
-        res.send(rows)
-        //console.log(rows)
+    const deletePatient = `DELETE FROM pacientes WHERE id=${id}`
+    con.query(deletePatient,(err,rows,field)=>{
+        const deleteConsult = `DELETE FROM atendimentos WHERE idPaciente=${id}`
+        con.query(deleteConsult,(err,rows,field)=>{
+            res.send(rows)
+        })
     })
 })
 
@@ -79,6 +81,14 @@ app.get('/submit/:nome/:cpf/:wpp/:nasc',(req,res)=>{
     })
 })
 
+app.get('/patient/consults',(req,res)=>{
+    const select = `SELECT * FROM atendimentos`
+    con.query(select,(err,rows,field)=>{
+        res.send(rows)
+        console.log(rows)
+    })
+})
+
 app.get('/patient/consult/:id/:result/:symp/:sympPlus',(req,res)=>{
     const id = req.params.id
     const result = req.params.result
@@ -100,7 +110,6 @@ app.get('/patient/consult/:id/:result/:symp/:sympPlus',(req,res)=>{
             console.log(rows)
         })
     })
-
 })
 
 server.listen(3001, () => {

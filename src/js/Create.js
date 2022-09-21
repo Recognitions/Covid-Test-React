@@ -6,8 +6,8 @@ import {Consult,openConsult} from './components/Consult'
 import CPF from './components/CPF'
 import pagination from './components/Pagination'
 import fillInputs from './components/FillInputs'
-import alert from './components/Alert'
 import Alert from './components/Alert'
+import InfoTable from './components/InfoTable'
 
 async function submit(e){
     e.preventDefault()
@@ -106,13 +106,16 @@ document.addEventListener("DOMContentLoaded",()=>{
 function Create(){
     return(
         <div className="patients">
-            <form method="get" onSubmit={submit} encType="multipart/form-data">
-                <Input type="text" id="nome" placeholder="Nome" maxLength="50" />
-                <Input type="text" id="cpf" placeholder="CPF" minLength="14" maxLength="14"/>
-                <Input type="text" id="wpp" placeholder="Whatsapp" minLength="14" maxLength="14"/>
-                <Input type="date" id="nasc"/>
-                <Input type="submit" id="input" value="Cadastrar"/>
-            </form>
+            <div className="formsArea">
+                <form method="get" onSubmit={submit} encType="multipart/form-data">
+                    <Input type="text" id="nome" placeholder="Nome" maxLength="50" />
+                    <Input type="text" id="cpf" placeholder="CPF" minLength="14" maxLength="14"/>
+                    <Input type="text" id="wpp" placeholder="Whatsapp" minLength="14" maxLength="14"/>
+                    <Input type="date" id="nasc"/>
+                    <Input type="submit" id="input" value="Cadastrar"/>
+                </form>
+                <InfoTable/>
+            </div>
             <div className="divPatients">
                 <div className="divInputs" id="divInputs">
                     <Input type="button" value="1"/>
