@@ -166,3 +166,39 @@ footer{
     border-radius: 3px;
     cursor: pointer;
 }
+
+.alert{
+    position: fixed;
+    top: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+    visibility: hidden;
+}.alert div:first-child{
+    background-color: white;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.3);
+}.alert input{
+    margin-top: 30px;
+    margin-bottom: -10px;
+    border: 0px;
+    font-size: 20px;
+    padding: 10px;
+    width: 100%;
+    border-radius: 10px;
+    background-color: var(--button1);
+    color: var(--text1);
+    cursor: pointer;
+}
+.visible{
+    opacity: 1;
+    visibility: visible;
+}

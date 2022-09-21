@@ -6,6 +6,8 @@ import {Consult,openConsult} from './components/Consult'
 import CPF from './components/CPF'
 import pagination from './components/Pagination'
 import fillInputs from './components/FillInputs'
+import alert from './components/Alert'
+import Alert from './components/Alert'
 
 async function submit(e){
     e.preventDefault()
@@ -89,6 +91,7 @@ export async function render(actual){
             editForm.dataset.id = patient.id
 
             openModal()
+            
         })
     })
 }
