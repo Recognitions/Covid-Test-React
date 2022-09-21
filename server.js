@@ -20,10 +20,15 @@ app.get('/', (req, res) => {
 })
 
 app.get('/patients',(req,res)=>{
-    const select = `SELECT * FROM pacientes`
+    const select = "SELECT * FROM pacientes"
     con.query(select,(err,rows,fields)=>{
         res.send(rows)
-        //console.log(rows)
+    })
+})
+app.get('/consults',(req,res)=>{
+    const select = "SELECT * FROM atendimentos"
+    con.query(select,(err,rows,field)=>{
+        res.send(rows)
     })
 })
 
@@ -76,14 +81,6 @@ app.get('/submit/:nome/:cpf/:wpp/:nasc',(req,res)=>{
             const insert = `INSERT INTO pacientes(nome,cpf,wpp,nasc,foto,estado) VALUES('${nome}','${cpf}','${wpp}','${nasc}','${foto}',3)`
             con.query(insert)
         }
-        res.send(rows)
-        console.log(rows)
-    })
-})
-
-app.get('/patient/consults',(req,res)=>{
-    const select = `SELECT * FROM atendimentos`
-    con.query(select,(err,rows,field)=>{
         res.send(rows)
         console.log(rows)
     })
