@@ -12,7 +12,7 @@ function fillInputs(pagesCount,limit){
         input.value=i
         divInputs.appendChild(input)
         document.querySelector(`#PAGE${id}`).addEventListener("click",()=>{
-            render(i*Math.floor(limit/3))
+            render(i*Math.floor(limit/5))
         })
 
     }
