@@ -6,7 +6,6 @@ function fillInputs(pagesCount,limit){
     divInputs.innerHTML=""
     for(let i=1; i<=pagesCount; i++){
         const id = uuidv4()
-        
         const input = document.createElement("input")
         input.type="button"
         input.id=`PAGE${id}`
