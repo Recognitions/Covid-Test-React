@@ -21,7 +21,7 @@ async function edit(e){
         const update = await api.get(`/patient/edit/${patient.id}/${patient.name}/${patient.cpf}/${patient.wpp}/${patient.nasc}`)
         if(update.data){
             alert("Paciente editado!")
-            render()
+            render(1)
         }else{
             alert("Impossível editar paciente!")
         }

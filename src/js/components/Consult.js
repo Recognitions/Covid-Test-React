@@ -13,7 +13,7 @@ async function consult(e){
     const consult = await api.get(`/patient/consult/${consultForm}/${result}/${patientSymp}/${sympPlus}`)
     if(consult.data){
         alert("Paciente consultado!")
-        render()
+        render(1)
     }
 }
 

@@ -5,6 +5,7 @@ import state from './components/State'
 import {Consult,openConsult} from './components/Consult'
 import CPF from './components/CPF'
 import pagination from './components/Pagination'
+import fillInputs from './components/FillInputs'
 
 async function submit(e){
     e.preventDefault()
@@ -17,7 +18,7 @@ async function submit(e){
             const get = await api.get(`/submit/${nome.value}/${cpf.value}/${wpp.value}/${nasc.value}`)
             if((get.data).length==0){
                 document.querySelector(".patients form").reset()
-                render()
+                render(1)
             }else{
                 alert("Impossível cadastrar paciente")
             }
@@ -32,24 +33,25 @@ async function del(id){
     const get = await api.get(`/patient/delete/${id}`)
 }
 
-function fillInputs(){
-    
-}
-
-export async function render(){
+export async function render(actual){
     const get = await api.get('/patients')
     const patients = get.data ? (get.data).sort((a,b)=>{return b.id - a.id}) : []
-    const pagesCount = Math.floor((patients.length)/5)
-    console.log(pagesCount)
-    const page = pagination(patients,1,5)
-
+    const limit = 5
+    const actualPage = 1
+    const pagesCount = Math.floor((patients.length)/limit)+1
+    console.log(pagesCount, patients.length, actual)
+    
+    fillInputs(pagesCount,limit)
+    
     const tbody = document.querySelector(`#tablePatients tbody`)
     tbody.innerHTML=""
+    const page = pagination(patients,actual,limit)
     page.forEach((patient)=>{
         const tr = document.createElement("tr")
+        tr.title=patient.nome
         tr.innerHTML=`
             <td><img src="../img/patients/none.jpg" width="30"></td>
-            <td>${patient.nome}</td>
+            <td>${(patient.nome).substr(0,((patient.nome).indexOf(" ")))}</td>
             <td>${patient.cpf}</td>
             <td>${patient.wpp}</td>
             <td>${patient.nasc}</td>
@@ -71,7 +73,7 @@ export async function render(){
         })
         document.querySelector(`#DEL${patient.id}`).addEventListener("click",()=>{
             del(patient.id)
-            render()
+            render(1)
         })
         document.querySelector(`#EDIT${patient.id}`).addEventListener("click",()=>{
             const editForm = document.getElementById("editForm")
@@ -94,7 +96,7 @@ export async function render(){
 document.addEventListener("DOMContentLoaded",()=>{
     const url = window.location.href
     if(url.split("/")[3]=="cadastro"){
-        render()
+        render(1)
     }
 })
 
@@ -109,7 +111,7 @@ function Create(){
                 <Input type="submit" id="input" value="Cadastrar"/>
             </form>
             <div className="divPatients">
-                <div className="divInputs">
+                <div className="divInputs" id="divInputs">
                     <Input type="button" value="1"/>
                     <Input type="button" value="2"/>
                     <Input type="button" value="3"/>
