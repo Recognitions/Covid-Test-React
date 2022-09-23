@@ -12,12 +12,6 @@ const app = express()
 app.use(cors())
 const http = require('http')
 const server = http.createServer(app)
-var formidable = require('formidable');
-var fs = require('fs')
-
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/public/index.html')
-})
 
 app.get('/patients',(req,res)=>{
     const select = "SELECT * FROM pacientes"
@@ -25,6 +19,7 @@ app.get('/patients',(req,res)=>{
         res.send(rows)
     })
 })
+
 app.get('/consults',(req,res)=>{
     const select = "SELECT * FROM atendimentos"
     con.query(select,(err,rows,field)=>{
@@ -59,13 +54,13 @@ app.get('/patient/edit/:id/:nome/:cpf/:wpp/:nasc',(req,res)=>{
     const nasc = req.params.nasc
     const select = `SELECT * FROM pacientes WHERE cpf='${cpf}'`
     con.query(select,(err,rows,field)=>{
-        if(rows){
+        if(rows.length<=1){
             const update = `UPDATE pacientes SET nome='${nome}',cpf='${cpf}',wpp='${wpp}',nasc='${nasc}' WHERE id=${id}`
             con.query(update,(err,rows,field)=>{
                 res.send(rows)
-                console.log(rows)
             })
         }
+        console.log(rows)
     })
 })
 
@@ -74,10 +69,10 @@ app.get('/submit/:nome/:cpf/:wpp/:nasc',(req,res)=>{
     const cpf = req.params.cpf
     const wpp = req.params.wpp
     const nasc = req.params.nasc
-    const foto = "foto.png"
+    const foto = "none.jpg"
     const select = `SELECT * FROM pacientes WHERE cpf='${cpf}'`
     con.query(select,(err,rows,fields)=>{
-        if(rows==0){
+        if(rows.length==0){
             const insert = `INSERT INTO pacientes(nome,cpf,wpp,nasc,foto,estado) VALUES('${nome}','${cpf}','${wpp}','${nasc}','${foto}',3)`
             con.query(insert)
         }
@@ -110,5 +105,15 @@ app.get('/patient/consult/:id/:result/:symp/:sympPlus',(req,res)=>{
 })
 
 server.listen(3001, () => {
-    console.log('Servidor local rodando na porta 3001')
+    console.log(`Servidor local rodando na porta 3001
+      .__________________.
+      |.----------------.|
+      ||     ______     ||
+      ||    |           ||
+      ||    |   ___     ||
+      ||    |      |    ||
+      ||    |______|    ||
+      ||________________||
+      /.-.-.-.-.-.-.-.-.-/
+    `)
 })
