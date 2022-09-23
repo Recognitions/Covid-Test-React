@@ -1,12 +1,11 @@
 *{
     margin: 0px;
-    font-family: Arial, Helvetica, sans-serif;
     outline: none;
+    font-family: Arial, Helvetica, sans-serif;
 }
 :root{
     --button1: blue;
     --text1: #f8f8f8;
-
     --button2: rgb(255, 192, 76);
 }
 body{
@@ -14,29 +13,29 @@ body{
     background-color: rgba(0,0,0,0.2);
 }
 #root{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
     height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
 }
 header{
     width: 100%;
-    background-color: white;
+    padding: 2px;
     display: flex;
     flex-direction: row;
     align-items: center;
+    background-color: white;
     justify-content: space-between;
-    padding: 2px;
 }header::before{
     content:'';
     width: 60px;
     height: 60px;
-    background-image: url(../public/img/logo.jpg);
+    margin-left: 5px;
+    background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 100%;
-    margin-left: 5px;
+    background-image: url(../public/img/logo.jpg);
 }
 header div{
     width: 100%;
@@ -47,51 +46,51 @@ header div{
 }
 
 header input[type=button]{
-    background-color: var(--button1);
-    color: var(--text1);
-    font-size: 20px;
-    padding: 10px;
-    border-radius: 10px;
-    border: 2px solid var(--button1);
     margin: 2px;
+    padding: 10px;
+    font-size: 20px;
     cursor: pointer;
+    color: var(--text1);
+    border-radius: 10px;
     transition: ease 0.1s;
+    background-color: var(--button1);
+    border: 2px solid var(--button1);
 }
 header input[type=button]:hover{
-    background-color: var(--text1);
     color: var(--button1);
+    background-color: var(--text1);
 }
 .patients{
     width: 100%;
     height: 100%;
     display: flex;
-    flex-direction: column;
     align-items: center;
+    flex-direction: column;
 }
 .patients form{
     width: 50%;
     margin: 10px;
     display: flex;
-    flex-direction: column;
-    background-color: white;
     padding: 20px;
     border-radius: 10px;
+    flex-direction: column;
+    background-color: white;
 }.patients form input{
-    font-size: 18px;
     border: 0px;
     padding: 10px;
+    font-size: 18px;
     border-bottom: 2px solid transparent;
 }.patients form input:focus{
     border-bottom: 2px solid var(--button1);
 }.patients form input[type=submit],.patients form input[type=reset]{
-    background-color: var(--button2);
-    color: var(--text1);
-    border-radius: 10px;
-    font-size: 20px;
-    border: 1px solid var(--button2);
     padding: 8px;
-    cursor: pointer;
     transition: 0s;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 10px;
+    color: var(--text1);
+    background-color: var(--button2);
+    border: 1px solid var(--button2);
 }.patients form input[type=submit]:hover,.patients form input[type=reset]:hover{
     filter: contrast(1.2);
 }.patients form input[type=reset]{
@@ -108,49 +107,49 @@ footer{
     padding: 10px;
     border-radius: 10px;
 }#tablePatients tbody{
-    border-right: 2px solid rgba(0,0,0,0.2);
     text-align: center;
-    box-shadow: 0px -5px 20px 1px rgba(0,0,0,0.2);
     border-radius: 10px;
+    border-right: 2px solid rgba(0,0,0,0.2);
+    box-shadow: 0px -5px 20px 1px rgba(0,0,0,0.2);
 }
 
 #home table th{
     cursor: pointer;
 }
 #home table thead th{
-    background-color: var(--button1);
-    color: var(--text1);
-    border: 2px solid var(--button1);
     padding: 10px;
+    color: var(--text1);
+    background-color: var(--button1);
     border-radius: 10px 10px 0px 0px;
+    border: 2px solid var(--button1);
 }
 #home table tbody th{
-    background-color: white;
-    border-bottom: 2px solid var(--button1);
-    border-radius: 0px 0px 10px 10px;
     padding: 5px;
     transition: 0.2s;
+    background-color: white;
+    border-radius: 0px 0px 10px 10px;
+    border-bottom: 2px solid var(--button1);
 }#home table tbody th:hover{
-    box-shadow: 0px 10px 20px 1px rgba(0,0,0,0.3);
     filter: contrast(2);
+    box-shadow: 0px 10px 20px 1px rgba(0,0,0,0.3);
 }
 
 .modal,.modal2{
-    position: fixed;
     top: 0px;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.5);
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    position: fixed;
     visibility: hidden;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgba(0,0,0,0.5);
 }
 .modal form,.modal2 form{
-    background-color: white;
     padding: 20px;
     border-radius: 10px;
+    background-color: white;
 }
 
 .inputArea{
@@ -158,13 +157,13 @@ footer{
     flex-direction: row;
     justify-content: center;
 }.inputArea input{
-    font-size: 15px;
-    border-radius: 5px;
     border: 0px;
     margin: 2px;
     padding: 8px;
-    cursor: pointer;
     color: white;
+    cursor: pointer;
+    font-size: 15px;
+    border-radius: 5px;
 }.inputArea input[value=Atender]{
     background-color: rgb(65, 161, 65);
 }.inputArea input[value=Editar]{
@@ -176,62 +175,62 @@ footer{
 .divPatients{
     width: 98%;
     height: 50%;
-    background-color: white;
     overflow-y: visible;
     border-radius: 10px;
+    background-color: white;
 }.divInputs{
     width: 98%;
-    flex-direction: row;
     display: flex;
-    align-items: center;
-    justify-content: center;
     padding: 10px;
     padding-bottom: 0px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }.divInputs input{
-    background-color: var(--button1);
-    color: white;
     border: 0px;
-    font-size: 30px;
-    border-radius: 5px;
-    cursor: pointer;
     margin: 1px;
-    border: 2px solid var(--button1);
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
     transition: 0.1s;
+    border-radius: 5px;
+    border: 2px solid var(--button1);
+    background-color: var(--button1);
 }.divInputs input:hover{
-    background-color: white;
     color: var(--button1);
+    background-color: white;
 }
 
 .alert{
-    position: fixed;
     top: 10px;
+    opacity: 0;
     width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    opacity: 0;
-    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+    position: fixed;
     visibility: hidden;
+    align-items: center;
+    flex-direction: column;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
 }.alert div:first-child{
-    background-color: white;
     padding: 30px;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
     border-radius: 10px;
+    flex-direction: column;
+    background-color: white;
+    justify-content: space-between;
     box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.3);
 }.alert input{
-    margin-top: 30px;
-    margin-bottom: -10px;
     border: 0px;
-    font-size: 20px;
-    padding: 10px;
     width: 100%;
-    border-radius: 10px;
-    background-color: var(--button1);
-    color: var(--text1);
+    padding: 10px;
+    font-size: 20px;
     cursor: pointer;
+    margin-top: 30px;
+    border-radius: 10px;
+    color: var(--text1);
+    margin-bottom: -10px;
+    background-color: var(--button1);
 }
 .visible{
     opacity: 1;
@@ -241,30 +240,30 @@ footer{
 .formsArea{
     width: 100%;
     display: flex;
-    flex-direction: row;
     align-items: center;
+    flex-direction: row;
     justify-content: center;
 }
 .patientsInfo{
-    background-color: white;
-    border-radius: 10px;
     width: 90%;
     height: 93%;
-    margin-right: 10px;
     display: flex;
+    flex-wrap: wrap;
+    margin-right: 10px;
+    border-radius: 10px;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    flex-direction: row;
-    flex-wrap: wrap;
+    background-color: white;
 }.patientsInfo table{
     width: 30%;
     margin: 20px;
-    border: 1px solid rgba(128, 128, 128, 0.507);
+    cursor: pointer;
+    transition: 0.2s;
+    user-select: none;
     border-top: 2px solid var(--button1);
     box-shadow: 5px 5px 1px 1px rgba(0,0,0,0.8);
-    cursor: pointer;
-    user-select: none;
-    transition: 0.2s;
+    border: 1px solid rgba(128, 128, 128, 0.507);
 }.patientsInfo table:hover{
     margin-right: 8px;
     margin-bottom: 8px;
