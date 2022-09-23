@@ -21,8 +21,30 @@ body{
     height: 100vh;
 }
 header{
-
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2px;
+}header::before{
+    content:'';
+    width: 60px;
+    height: 60px;
+    background-image: url(../public/img/logo.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
 }
+header div{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
 header input[type=button]{
     background-color: var(--button1);
     color: var(--text1);

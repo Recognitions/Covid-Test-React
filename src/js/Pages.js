@@ -15,7 +15,7 @@ const pagesArray = [
 ]
 
 export function pages(){
-    const populate = document.querySelector("header")
+    const populate = document.querySelector("header div")
     populate.innerHTML=""
     pagesArray.forEach((page)=>{
         const a = document.createElement("a")
