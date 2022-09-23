@@ -18,12 +18,22 @@ function InfoTable(){
                 <thead>
                     <tr>
                         <th>Pacientes</th>
-                        <th>Atendimentos</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <th id="patientsNum">0</th>
+                    </tr>
+                </tbody>
+            </table>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Atendimentos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
                         <th id="consultNum">0</th>
                     </tr>
                 </tbody>

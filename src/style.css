@@ -218,10 +218,20 @@ footer{
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
 }.patientsInfo table{
-    width: 96%;
-}.patientsInfo table{
+    width: 30%;
+    margin: 20px;
     border: 1px solid rgba(128, 128, 128, 0.507);
     border-top: 2px solid var(--button1);
     box-shadow: 5px 5px 1px 1px rgba(0,0,0,0.8);
+    cursor: pointer;
+    user-select: none;
+    transition: 0.2s;
+}.patientsInfo table:hover{
+    margin-right: 8px;
+    margin-bottom: 8px;
+    background-color: rgba(0,0,0,0.05);
+    box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.8);
 }
