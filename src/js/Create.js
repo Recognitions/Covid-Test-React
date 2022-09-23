@@ -8,6 +8,7 @@ import pagination from './components/Pagination'
 import fillInputs from './components/FillInputs'
 import Alert from './components/Alert'
 import InfoTable from './components/InfoTable'
+import ageFormat from './components/AgeFormat'
 
 async function submit(e){
     e.preventDefault()
@@ -56,7 +57,7 @@ export async function render(actual){
             <td>${(patient.nome).substr(0,((patient.nome).indexOf(" ")))}</td>
             <td>${patient.cpf}</td>
             <td>${patient.wpp}</td>
-            <td>${patient.nasc}</td>
+            <td>${ageFormat(patient.nasc)}</td>
             <td>${state[patient.estado]}</td>
             <td class="inputArea">
                 <Input type="button" id="ATEN${patient.id}" value="Atender"/>
