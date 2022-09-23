@@ -1,6 +1,6 @@
 import Input from './Input'
 import api from './Axios'
-import {render} from '../Create'
+import render from './Render'
 import symp from './Symp'
 
 async function consult(e){

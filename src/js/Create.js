@@ -1,108 +1,12 @@
-import api from './components/Axios'
 import Input from './components/Input'
 import {Modal,openModal} from './components/Modal'
-import state from './components/State'
 import {Consult,openConsult} from './components/Consult'
-import CPF from './components/CPF'
-import pagination from './components/Pagination'
-import fillInputs from './components/FillInputs'
-import Alert from './components/Alert'
 import InfoTable from './components/InfoTable'
-import ageFormat from './components/AgeFormat'
+import submit from './components/Submit'
+import render from './components/Render'
+import DOMContentLoaded from './components/DOMContentLoaded'
 
-async function submit(e){
-    e.preventDefault()
-    const nome = document.getElementById("nome")
-    const cpf = document.getElementById("cpf")
-    const wpp = document.getElementById("wpp")
-    const nasc = document.getElementById("nasc")
-    if(nome.value!=""&&cpf.value!=""&&wpp.value!=""&&nasc.value!=""){
-        if(CPF(cpf.value)==true){
-            const get = await api.get(`/submit/${nome.value}/${cpf.value}/${wpp.value}/${nasc.value}`)
-            if((get.data).length==0){
-                document.querySelector(".patients form").reset()
-                render(1)
-            }else{
-                alert("Impossível cadastrar paciente")
-            }
-        }else{
-            alert("CPF inválido!")
-        }
-
-    }
-}
-
-async function del(id){
-    const get = await api.get(`/patient/delete/${id}`)
-}
-
-export async function render(actual){
-    const get = await api.get('/patients')
-    const patients = get.data ? (get.data).sort((a,b)=>{return b.id - a.id}) : []
-    const limit = 5
-    const actualPage = 1
-    const pagesCount = Math.floor((patients.length)/limit)+1
-    console.log(pagesCount, patients.length, actual)
-    
-    fillInputs(pagesCount,limit)
-    
-    const tbody = document.querySelector(`#tablePatients tbody`)
-    tbody.innerHTML=""
-    const page = pagination(patients,actual,limit)
-    page.forEach((patient)=>{
-        const tr = document.createElement("tr")
-        tr.title=patient.nome
-        tr.innerHTML=`
-            <td><img src="../img/patients/none.jpg" width="30"></td>
-            <td>${(patient.nome).substr(0,((patient.nome).indexOf(" ")))}</td>
-            <td>${patient.cpf}</td>
-            <td>${patient.wpp}</td>
-            <td>${ageFormat(patient.nasc)}</td>
-            <td>${state[patient.estado]}</td>
-            <td class="inputArea">
-                <Input type="button" id="ATEN${patient.id}" value="Atender"/>
-                <Input type="button" id="EDIT${patient.id}" value="Editar"/>
-                <Input type="button" id="DEL${patient.id}" value="Deletar"/>
-            </td>
-        `
-        tbody.appendChild(tr)
-        document.querySelector(`#ATEN${patient.id}`).addEventListener("click",()=>{
-            const consultForm = document.getElementById("consultForm")
-            consultForm.dataset.id = patient.id
-            consultForm.dataset.result = ""
-            consultForm.dataset.symp = ""
-            consultForm.dataset.sympPlus = ""
-            openConsult()
-        })
-        document.querySelector(`#DEL${patient.id}`).addEventListener("click",()=>{
-            del(patient.id)
-            render(1)
-        })
-        document.querySelector(`#EDIT${patient.id}`).addEventListener("click",()=>{
-            const editForm = document.getElementById("editForm")
-            const editName = document.getElementById("editName")
-            const editCPF = document.getElementById("editCPF")
-            const editWPP = document.getElementById("editWPP")
-            const editData = document.getElementById("editData")
-
-            editName.value = patient.nome
-            editCPF.value = patient.cpf
-            editWPP.value = patient.wpp
-            editData.value = patient.nasc
-            editForm.dataset.id = patient.id
-
-            openModal()
-            
-        })
-    })
-}
-
-document.addEventListener("DOMContentLoaded",()=>{
-    const url = window.location.href
-    if(url.split("/")[3]=="cadastro"){
-        render(1)
-    }
-})
+DOMContentLoaded()
 
 function Create(){
     return(

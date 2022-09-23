@@ -23,7 +23,7 @@ body{
 header{
 
 }
-header button{
+header input[type=button]{
     background-color: var(--button1);
     color: var(--text1);
     font-size: 20px;
@@ -34,7 +34,7 @@ header button{
     cursor: pointer;
     transition: ease 0.1s;
 }
-header button:hover{
+header input[type=button]:hover{
     background-color: var(--text1);
     color: var(--button1);
 }

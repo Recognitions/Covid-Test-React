@@ -1,6 +1,7 @@
 import api from "./Axios"
+import DOMContentLoaded from "./DOMContentLoaded"
 
-async function consultNums(){
+export async function consultNums(){
     const patientsNum = document.getElementById("patientsNum")
     const patientsResult = await api.get('/patients')
     patientsNum.innerHTML = (patientsResult.data).length
@@ -8,12 +9,7 @@ async function consultNums(){
     const consultNum = document.getElementById("consultNum")
     const consultResult = await api.get('/consults')
     consultNum.innerHTML = (consultResult.data).length
-
 }
-
-document.addEventListener("DOMContentLoaded",()=>{
-    setInterval(()=>{consultNums()},1000)
-})
 
 function InfoTable(){
     return(

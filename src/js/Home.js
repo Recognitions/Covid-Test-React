@@ -1,22 +1,6 @@
-import api from './components/Axios'
-import Input from './components/Input'
+import DOMContentLoaded from './components/DOMContentLoaded'
 
-async function info(){
-    const get = await api.get('/patients')
-    const patients = get.data
-
-    document.querySelector("#qtdPatients").innerHTML=`<h2>${patients.length}</h2>`
-}
-
-document.addEventListener("DOMContentLoaded",()=>{
-    const url = window.location.href
-    if(url.split("/")[3]!="cadastro"){
-        info()
-        setInterval(()=>{
-            info() //Atualiza o número de pacientes em tempo real
-        },1000)
-    }
-})
+DOMContentLoaded()
 
 function Home(){
     return(

@@ -1,6 +1,8 @@
+import React from 'react'
+import ReactDOM from 'react-dom/client'
 import Input from './Input'
 import api from './Axios'
-import {render} from '../Create'
+import render from './Render'
 import CPF from './CPF'
 import Alert from './Alert'
 
@@ -27,7 +29,8 @@ async function edit(e){
             alert("Impossível editar paciente!")
         }
     }else{
-        const alert = <Alert class="alert visible" text="Alerta com mensagem"/>
+        const alert = <Alert class="alert visible" text="CPF Inválido!"/>
+        
     }
 
 }
