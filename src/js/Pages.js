@@ -1,32 +1,26 @@
 import Input from './components/Input'
 
-const pages = [
+const pagesArray = [
     {
         url: '/',
-        name: 'Home'
+        name: 'Home',
+        file: 'Home'
     },
     {
         url: '/cadastro',
-        name: 'Cadastro'
+        name: 'Cadastro',
+        file: 'Create'
     }
 
 ]
 
-function p(){
-    pages.forEach((page)=>{
-        document.getElementById("populate").innerHTML+=`
-            <a><Input type="button" title="${page.name}"/></a>
-        `
+export function pages(){
+    const populate = document.querySelector("header")
+    populate.innerHTML=""
+    pagesArray.forEach((page)=>{
+        const a = document.createElement("a")
+        a.href=page.url
+        a.innerHTML=`<Input type="button" value=${page.name}>`
+        populate.appendChild(a)
     })
 }
-
-document.addEventListener("DOMContentLoaded",p)
-
-function Pages(props){
-    return(
-        <div id="populate">
-        </div>
-    )
-}
-
-export default Pages

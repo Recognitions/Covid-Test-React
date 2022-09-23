@@ -11,12 +11,8 @@ async function render(actual){
     const get = await api.get('/patients')
     const patients = get.data ? (get.data).sort((a,b)=>{return b.id - a.id}) : []
     const limit = 5
-    const actualPage = 1
     const pagesCount = Math.floor((patients.length)/limit)+1
-    console.log(pagesCount, patients.length, actual)
-    
     fillInputs(pagesCount,limit)
-    
     const tbody = document.querySelector(`#tablePatients tbody`)
     tbody.innerHTML=""
     const page = pagination(patients,actual,limit)

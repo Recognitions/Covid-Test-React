@@ -1,9 +1,8 @@
-import Pages from './Pages'
+import {Pages} from './Pages'
 
 function Header(){
     return(
         <header>
-            <Pages/>
         </header>
     )
 }

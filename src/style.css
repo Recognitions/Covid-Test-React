@@ -11,7 +11,7 @@
 }
 body{
     overflow-x: hidden;
-    background-color: rgba(0,0,0,0.1);
+    background-color: rgba(0,0,0,0.2);
 }
 #root{
     display: flex;
@@ -84,6 +84,11 @@ footer{
     width: 100%;
     padding: 10px;
     border-radius: 10px;
+}#tablePatients tbody{
+    border-right: 2px solid rgba(0,0,0,0.2);
+    text-align: center;
+    box-shadow: 0px -5px 20px 1px rgba(0,0,0,0.2);
+    border-radius: 10px;
 }
 
 #home table th{
@@ -152,18 +157,26 @@ footer{
     overflow-y: visible;
     border-radius: 10px;
 }.divInputs{
-    width: 100%;
+    width: 98%;
     flex-direction: row;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 10px;
+    padding-bottom: 0px;
 }.divInputs input{
     background-color: var(--button1);
     color: white;
     border: 0px;
     font-size: 30px;
-    border-radius: 3px;
+    border-radius: 5px;
     cursor: pointer;
+    margin: 1px;
+    border: 2px solid var(--button1);
+    transition: 0.1s;
+}.divInputs input:hover{
+    background-color: white;
+    color: var(--button1);
 }
 
 .alert{

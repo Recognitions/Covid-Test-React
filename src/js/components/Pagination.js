@@ -9,7 +9,6 @@ function pagination(array,actual,limit){
             count++
         }
     }
-    console.log(result)
     return result
 }
 
